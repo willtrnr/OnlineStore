@@ -4,3 +4,13 @@
 *.jar
 *.war
 *.ear
+
+# Maven3
+target/
+
+# Sublime Text 2
+*.sublime-*
+
+# Temp files
+*.log
+*.lck
