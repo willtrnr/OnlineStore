@@ -1,0 +1,47 @@
+extends layout
+
+block precontent
+  .slider
+    ul
+      li
+        img(src='holder.js/960x225', width='960', height='225')
+      li
+        img(src='holder.js/960x225', width='960', height='225')
+      li
+        img(src='holder.js/960x225', width='960', height='225')
+
+block content
+  section.section
+    .section-header
+      h2 Books
+    .horizontal
+      .scroll
+        each item in [{ "title": "Book 1", "price": "0.00" }, { "title": "Book 2", "price": "0.00" }, { "title": "Book 3", "price": "0.00" }, { "title": "Book 4", "price": "0.00" }, { "title": "Book 5", "price": "0.00" }, { "title": "Book 6", "price": "0.00" }, { "title": "Book 7", "price": "0.00" }]
+          include partials/itemtile
+      .fade
+    .section-footer
+      a(href=url.action("store/books")) See all...
+
+  section.section
+    .section-header
+      h2 Movies
+    .horizontal
+      .scroll
+        each item in [{ "title": "Movie 1", "price": "0.00" }, { "title": "Movie 2", "price": "0.00" }, { "title": "Movie 3", "price": "0.00" }, { "title": "Movie 4", "price": "0.00" }, { "title": "Movie 5", "price": "0.00" }, { "title": "Movie 6", "price": "0.00" }, { "title": "Movie 7", "price": "0.00" }]
+          include partials/itemtile
+      .fade
+    .section-footer
+      a(href='#') See all...
+
+  section.section
+    .section-header
+      h2 Music
+    .horizontal
+      .scroll
+        each item in [{ "title": "Album 1", "type": "album", "price": "0.00" }, { "title": "Album 2", "type": "album", "price": "0.00" }, { "title": "Album 3", "type": "album", "price": "0.00" }, { "title": "Album 4", "type": "album", "price": "0.00" }, { "title": "Album 5", "type": "album", "price": "0.00" }, { "title": "Album 6", "type": "album", "price": "0.00" }, { "title": "Album 7", "type": "album", "price": "0.00" }]
+          include partials/itemtile
+      .fade
+    .section-footer
+      a(href='#') See all...
+
+

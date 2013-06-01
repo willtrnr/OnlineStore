@@ -1,0 +1,12 @@
+.tile
+  .thumbnail
+    a(href='#')
+      if item.type == 'album'
+        img(src='holder.js/135x135', width='135', height='135')
+      else
+        img(src='holder.js/135x200', width='135', height='200')
+  .details
+    .title= item.title
+    .price
+      | #{item.price + '$ '}
+      a(href='#') Add to cart

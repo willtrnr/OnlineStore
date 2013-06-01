@@ -1,0 +1,13 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    William Turner -- Web front-end and back-end -- @petit_willy
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    jQuery, Modernizr
+    Font Awesome,
+    Java, Struts2

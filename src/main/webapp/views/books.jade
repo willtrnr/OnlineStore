@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  nav.sidebar
+    ul
+      li
+        a(href='#') Genre 1
+      li
+        a(href='#') Genre 2
+      li
+        a(href='#') Genre 3
+      li
+        a(href='#') Genre 4
+      li
+        a(href='#') Genre 5
+      li
+        a(href='#') Genre 6
+      li
+        a(href='#') Genre 7
+      li
+        a(href='#') Genre 8
+      li
+        a(href='#') Genre 9
+  section.section
+    .section-header
+      h2 Books
+    .tiled
+      each item in [{ "title": "Book 1", "price": "0.00" }, { "title": "Book 2", "price": "0.00" }, { "title": "Book 3", "price": "0.00" }, { "title": "Book 4", "price": "0.00" }, { "title": "Book 5", "price": "0.00" }, { "title": "Book 6", "price": "0.00" }, { "title": "Book 7", "price": "0.00" }]
+        include partials/itemtile

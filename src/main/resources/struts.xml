@@ -2,13 +2,24 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
   <constant name="struts.devMode" value="true" />
-  <package name="default" namespace="/" extends="struts-default">
+
+  <package name="default">
     <result-types>
       <result-type name="jade" class="net.archwill.covemifasol.extensions.JadeResult" />
     </result-types>
 
     <action name="index" class="net.archwill.covemifasol.actions.IndexAction">
       <result type="jade">index</result>
+    </action>
+  </package>
+
+  <package name="store" namespace="/store">
+    <result-types>
+      <result-type name="jade" class="net.archwill.covemifasol.extensions.JadeResult" />
+    </result-types>
+
+    <action name="books" class="net.archwill.covemifasol.actions.IndexAction">
+      <result type="jade">books</result>
     </action>
   </package>
 </struts>
