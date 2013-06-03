@@ -3,23 +3,15 @@ package net.archwill.covemifasol.entities;
 public class AlbumItem extends Item {
   public AlbumItem() {
     super();
-  }
-
-  // item INTEGER NOT NULL,
-  private int item;
-  public void setItem(int item) {
-    this.item = item;
-  }
-  public int getItem() {
-    return item;
+    setItemType(3);
   }
 
   // artiste INTEGER,
   private int artissssssssss;
-  public void setArtissssssssss(int artissssssssss) {
-    this.artissssssssss = artissssssssss;
-  }
   public int getArtissssssssss() {
     return artissssssssss;
+  }
+  public void setArtissssssssss(int artissssssssss) {
+    this.artissssssssss = artissssssssss;
   }
 }

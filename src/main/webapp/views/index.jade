@@ -16,7 +16,7 @@ block content
       h2 Books
     .horizontal
       .scroll
-        each item in [{ "title": "Book 1", "price": "0.00" }, { "title": "Book 2", "price": "0.00" }, { "title": "Book 3", "price": "0.00" }, { "title": "Book 4", "price": "0.00" }, { "title": "Book 5", "price": "0.00" }, { "title": "Book 6", "price": "0.00" }, { "title": "Book 7", "price": "0.00" }]
+        each item in books
           include partials/itemtile
       .fade
     .section-footer
@@ -27,7 +27,7 @@ block content
       h2 Movies
     .horizontal
       .scroll
-        each item in [{ "title": "Movie 1", "price": "0.00" }, { "title": "Movie 2", "price": "0.00" }, { "title": "Movie 3", "price": "0.00" }, { "title": "Movie 4", "price": "0.00" }, { "title": "Movie 5", "price": "0.00" }, { "title": "Movie 6", "price": "0.00" }, { "title": "Movie 7", "price": "0.00" }]
+        each item in movies
           include partials/itemtile
       .fade
     .section-footer
@@ -38,7 +38,7 @@ block content
       h2 Music
     .horizontal
       .scroll
-        each item in [{ "title": "Album 1", "type": "album", "price": "0.00" }, { "title": "Album 2", "type": "album", "price": "0.00" }, { "title": "Album 3", "type": "album", "price": "0.00" }, { "title": "Album 4", "type": "album", "price": "0.00" }, { "title": "Album 5", "type": "album", "price": "0.00" }, { "title": "Album 6", "type": "album", "price": "0.00" }, { "title": "Album 7", "type": "album", "price": "0.00" }]
+        each item in albums
           include partials/itemtile
       .fade
     .section-footer

@@ -1,12 +1,12 @@
 .tile
   .thumbnail
     a(href='#')
-      if item.type == 'album'
+      if item.getItemType() == 3
         img(src='holder.js/135x135', width='135', height='135')
       else
         img(src='holder.js/135x200', width='135', height='200')
   .details
-    .title= item.title
+    .title= item.getTitre();
     .price
-      | #{item.price + '$ '}
+      | #{item.getPrix() + '$ '}
       a(href='#') Add to cart

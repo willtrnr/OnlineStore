@@ -178,7 +178,7 @@ textarea {
   margin: 0 5px;
 }
 .content .horizontal .scroll {
-  overflow-x: scroll;
+  overflow-x: auto;
   padding: 10px;
   white-space: nowrap;
 }
