@@ -1,6 +1,6 @@
-package net.archwill.covemifasol.models;
+package net.archwill.covemifasol.entities;
 
-public class Item extends Model {
+public class Item extends Entity {
   public Item() {
     super();
   }

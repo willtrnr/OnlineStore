@@ -1,8 +1,8 @@
-package net.archwill.covemifasol.models;
+package net.archwill.covemifasol.entities;
 
-public class Genre extends Model {
-  public Genre() {
-    super();
+public class Artissssssssss extends Entity {
+  public Artissssssssss() {
+    super(); //> implying
   }
 
   // id INTEGER NOT NULL,
@@ -12,15 +12,6 @@ public class Genre extends Model {
   }
   public int getId() {
     return id;
-  }
-
-  // itemtype SMALLINT NOT NULL,
-  private int itemType;
-  public void setItemType(int itemType) {
-    this.itemType = itemType;
-  }
-  public int getItemType() {
-    return itemType;
   }
 
   // nom VARCHAR2(50) NOT NULL,

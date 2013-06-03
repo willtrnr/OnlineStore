@@ -1,4 +1,4 @@
-package net.archwill.covemifasol.models;
+package net.archwill.covemifasol.entities;
 
 public class AlbumItem extends Item {
   public AlbumItem() {

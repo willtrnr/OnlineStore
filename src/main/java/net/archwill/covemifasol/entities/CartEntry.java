@@ -1,6 +1,6 @@
-package net.archwill.covemifasol.models;
+package net.archwill.covemifasol.entities;
 
-public class CartEntry extends Model {
+public class CartEntry extends Entity {
   public CartEntry() {
     super();
   }

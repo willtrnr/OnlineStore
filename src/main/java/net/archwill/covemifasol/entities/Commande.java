@@ -1,8 +1,8 @@
-package net.archwill.covemifasol.models;
+package net.archwill.covemifasol.entities;
 
 import java.util.Date;
 
-public class Commande extends Model {
+public class Commande extends Entity {
   public Commande() {
     super();
   }

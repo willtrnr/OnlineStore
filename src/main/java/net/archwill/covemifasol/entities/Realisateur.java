@@ -1,7 +1,7 @@
-package net.archwill.covemifasol.models;
+package net.archwill.covemifasol.entities;
 
-public class Auteur extends Model {
-  public Auteur() {
+public class Realisateur extends Entity {
+  public Realisateur() {
     super();
   }
 
