@@ -9,7 +9,7 @@ public class LoginAction extends Action {
     if (email != null && password != null) {
 
     }
-    return SUCCESS;
+    return INPUT;
   }
 
   private String email;

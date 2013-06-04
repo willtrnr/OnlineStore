@@ -3,10 +3,10 @@ package net.archwill.covemifasol.actions;
 import com.opensymphony.xwork2.interceptor.ParameterNameAware;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.struts2.interceptor.ParameterAware;
-import org.apache.struts2.interceptor.SessionAware;
-import net.archwill.covemifasol.entities.Client;
 import net.archwill.covemifasol.DbManager;
+import net.archwill.covemifasol.entities.CartEntry;
+import net.archwill.covemifasol.entities.Client;
+import org.apache.struts2.interceptor.SessionAware;
 
 public class Action implements com.opensymphony.xwork2.Action, SessionAware, ParameterNameAware {
   protected Map<String, Object> locals;
@@ -20,9 +20,13 @@ public class Action implements com.opensymphony.xwork2.Action, SessionAware, Par
 
   @Override
   public String execute() throws Exception {
-    if (session != null && session.containsKey("userid")) {
-      //user = DbManager.Instance().findClientById(session.get("userid"));
-      locals.put("user", user);
+    if (session != null) {
+      if (session.containsKey("userid")) {
+        user = DbManager.Instance().findClientById((Integer)session.get("userid"));
+        locals.put("user", user);
+      } else if (!session.containsKey("cart")) {
+        session.put("cart", new HashMap<Integer, CartEntry>());
+      }
     }
     return NONE;
   }

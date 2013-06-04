@@ -5,10 +5,11 @@ block content
     .section-header
       h2 Log In
     form(action=url.action('login'), method='post')
-      div
-        input(id='email', type='email', name='email', placeholder='E-mail', required)
-      div
-        input(id='password', type='password', name='password', placeholder='Password', required)
+      fieldset
+        div
+          input(id='email', type='email', name='email', placeholder='E-mail', required)
+        div
+          input(id='password', type='password', name='password', placeholder='Password', required)
       div
         button(type='submit')
           span.icon-signin

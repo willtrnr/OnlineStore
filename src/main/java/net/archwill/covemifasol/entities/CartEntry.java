@@ -3,6 +3,7 @@ package net.archwill.covemifasol.entities;
 public class CartEntry extends Entity {
   public CartEntry() {
     super();
+    setQte(1);
   }
 
   // client INTEGER,

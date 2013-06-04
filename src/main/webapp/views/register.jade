@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  section.section
+    .section-header
+      h2 Register
+    form(action=url.action('register'), method='post')
+      fieldset
+        div
+          input(id='nom', type='text', name='nom', placeholder='Last name', required)
+        div
+          input(id='prenom', type='text', name='prenom', placeholder='First name', required)
+        div
+          input(id='addresse', type='text', name='addresse', placeholder='Address')
+        div
+          input(id='ville', type='text', name='ville', placeholder='City')
+        div
+          input(id='email', type='email', name='email', placeholder='E-mail', required)
+        div
+          input(id='password', type='password', name='password', placeholder='Password', required)
+        div
+          input(id='confirm', type='password', name='confirm', placeholder='Confirm', required)
+        div
+          input(id='ccNumber', type='text', name='ccNumber', placeholder='CC Number')
+        div
+          input(id='ccMonth', type='number', name='ccMonth', min='1', max='12', placeholder='CC Month')
+          input(id='ccYear', type='number', name='ccYear', min='13', max='99', placeholder='CC Year')
+      div
+        button(type='submit')
+          span.icon-signin
+          |  Register

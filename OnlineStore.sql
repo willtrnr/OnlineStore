@@ -100,6 +100,8 @@ CREATE TABLE clients (
   ccmonth SMALLINT,
   ccyear SMALLINT,
   cctype VARCHAR2(10),
+  email VARCHAR2(50),
+  password CHAR(128),
   CONSTRAINT pk_clients PRIMARY KEY (id)
 );
 COMMIT;

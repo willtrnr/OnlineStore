@@ -239,4 +239,17 @@ public class DbManager {
     }
     return items;
   }
+
+
+  private PreparedStatement clientById = null;
+  public Client findClientById(int id) throws Exception {
+    if (clientById == null) clientById = connection.prepareStatement("SELECT * FROM CLIENTS C WHERE C.ID = ?");
+    clientById.setInt(1, id);
+    ResultSet rs = clientById.executeQuery();
+    if (rs.next()) {
+      return new Client(rs);
+    } else {
+      return null;
+    }
+  }
 }

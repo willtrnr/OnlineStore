@@ -23,6 +23,7 @@ public class Item extends Entity {
     setStock(rs.getInt(5));
     setStockLimit(rs.getInt(6));
     setGenre(rs.getInt(7));
+    //setDate(rs.getDate(8)); or whatever it is
   }
 
   // id INTEGER NOT NULL,

@@ -1,8 +1,25 @@
 package net.archwill.covemifasol.entities;
 
+import java.sql.ResultSet;
+
 public class Client extends Entity {
   public Client() {
     super();
+  }
+
+  public Client(ResultSet rs) throws Exception {
+    super();
+    setId(rs.getInt(1));
+    setNom(rs.getString(2));
+    setPrenom(rs.getString(3));
+    setAddresse(rs.getString(4));
+    setVille(rs.getString(5));
+    setCcNumber(rs.getString(6));
+    setCcMonth(rs.getInt(7));
+    setCcYear(rs.getInt(8));
+    setCcType(rs.getString(9));
+    setEmail(rs.getString(10));
+    setPassword(rs.getString(11));
   }
 
   // id INTEGER NOT NULL,
@@ -84,5 +101,23 @@ public class Client extends Entity {
   }
   public void setCcType(String ccType) {
     this.ccType = ccType;
+  }
+
+  // email VARCHAR2(50),
+  private String email;
+  public String getEmail() {
+    return email;
+  }
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  // password CHAR(128),
+  private String password;
+  public String getPassword() {
+    return password;
+  }
+  public void setPassword(String password) {
+    this.password = password;
   }
 }

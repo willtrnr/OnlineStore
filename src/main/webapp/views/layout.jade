@@ -25,14 +25,14 @@ body
           li.right
             a(href='#')
               span.icon-user
-              | #{' ' + user.name}
+              | #{' ' + user.getPrenom() + ' ' + user.getNom()}
         else
           li.right
             a(href=url.action('login'))
               span.icon-signin
               |  Log In
           li.right
-            a(href='#')
+            a(href=url.action('register'))
               span.icon-asterisk
               |  Register
   .main
@@ -61,9 +61,9 @@ body
             span.icon-headphones
             |  Music
         li.right
-          a(href='#')
+          a(href=url.action('cart/index'))
             span.icon-shopping-cart
-            |  Cart (0)
+            |  Cart (#{session.cart.size()})
     block precontent
     .content
       block content

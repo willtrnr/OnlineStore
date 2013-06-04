@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  section.section
+    .page-header
+      h2 Cart
+    each entry in session.cart.values()
+      div= entry.getItem() + ' x' + entry.getQte();
