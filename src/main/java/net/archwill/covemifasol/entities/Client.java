@@ -1,5 +1,6 @@
 package net.archwill.covemifasol.entities;
 
+import java.security.MessageDigest;
 import java.sql.ResultSet;
 
 public class Client extends Entity {
@@ -20,6 +21,16 @@ public class Client extends Entity {
     setCcType(rs.getString(9));
     setEmail(rs.getString(10));
     setPassword(rs.getString(11));
+  }
+
+  public static String hashPassword(String password) throws Exception {
+    MessageDigest md = MessageDigest.getInstance("SHA-512");
+    byte[] digest = md.digest(password.getBytes());
+    StringBuilder hash = new StringBuilder();
+    for (byte b : digest) {
+      hash.append(String.format("%02x", b));
+    }
+    return hash.toString();
   }
 
   // id INTEGER NOT NULL,

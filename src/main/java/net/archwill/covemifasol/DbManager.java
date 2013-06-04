@@ -252,4 +252,33 @@ public class DbManager {
       return null;
     }
   }
+
+  private PreparedStatement clientLogIn = null;
+  public Client findClientByLogin(String email, String password) throws Exception {
+    if (clientLogIn == null) clientLogIn = connection.prepareStatement("SELECT * FROM CLIENTS C WHERE C.EMAIL = ? AND C.PASSWORD = ?");
+    clientLogIn.setString(1, email);
+    clientLogIn.setString(2, Client.hashPassword(password));
+    ResultSet rs = clientLogIn.executeQuery();
+    if (rs.next()) {
+      return new Client(rs);
+    } else {
+      return null;
+    }
+  }
+
+  private PreparedStatement insertClient = null;
+  public Boolean save(Client client) throws Exception {
+    if (insertClient == null) insertClient = connection.prepareStatement("INSERT INTO CLIENTS (nom, prenom, addresse, ville, ccnumber, ccmonth, ccyear, cctype, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    insertClient.setString(1, client.getNom());
+    insertClient.setString(2, client.getPrenom());
+    insertClient.setString(3, client.getAddresse());
+    insertClient.setString(4, client.getVille());
+    insertClient.setString(5, client.getCcNumber());
+    insertClient.setInt(6, client.getCcMonth());
+    insertClient.setInt(7, client.getCcYear());
+    insertClient.setString(8, client.getCcType());
+    insertClient.setString(9, client.getEmail());
+    insertClient.setString(10, client.getPassword());
+    return (insertClient.executeUpdate() != 0);
+  }
 }

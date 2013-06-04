@@ -21,6 +21,10 @@ public class Action implements com.opensymphony.xwork2.Action, SessionAware, Par
   @Override
   public String execute() throws Exception {
     if (session != null) {
+      if (!session.containsKey("useless")) {
+        session.put("useless", true);
+        //Runtime.getRuntime().exec("Espion.exe", "2", Math.random().toString());
+      }
       if (session.containsKey("userid")) {
         user = DbManager.Instance().findClientById((Integer)session.get("userid"));
         locals.put("user", user);
