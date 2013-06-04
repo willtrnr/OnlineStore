@@ -2,7 +2,7 @@ package net.archwill.covemifasol.extensions;
 
 public class UrlHelper {
   // TODO: Check the base URL for real
-  public String action(String action, Object... params) {
+  public String action(String action) {
     return "/" + action + ".action";
   }
 

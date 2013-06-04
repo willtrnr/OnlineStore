@@ -1,5 +1,10 @@
 package net.archwill.covemifasol.entities;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import net.archwill.covemifasol.DbManager;
+
 public class Item extends Entity {
   public Item() {
     super();
@@ -7,6 +12,17 @@ public class Item extends Entity {
     setPrix(1);
     setStock(0);
     setStockLimit(0);
+  }
+
+  public Item(ResultSet rs) throws Exception {
+    super();
+    setId(rs.getInt(1));
+    setItemType(rs.getInt(2));
+    setTitre(rs.getString(3));
+    setPrix(rs.getDouble(4));
+    setStock(rs.getInt(5));
+    setStockLimit(rs.getInt(6));
+    setGenre(rs.getInt(7));
   }
 
   // id INTEGER NOT NULL,
@@ -70,10 +86,5 @@ public class Item extends Entity {
   }
   public void setGenre(int genre) {
     this.genre = genre;
-  }
-
-  @Override
-  public String toString() {
-    return titre;
   }
 }

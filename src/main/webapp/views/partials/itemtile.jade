@@ -1,12 +1,13 @@
 .tile
   .thumbnail
-    a(href='#')
-      if item.getItemType() == 3
+    a(href=url.action('store/item') + '?id=' + item.getId())
+      if item.getItemType() == 1
         img(src='holder.js/135x135', width='135', height='135')
       else
         img(src='holder.js/135x200', width='135', height='200')
   .details
-    .title= item.getTitre();
+    .title
+      a(href=url.action('store/item') + '?id=' + item.getId(), title=item.getTitre())= format.maxLen(item.getTitre(), 12);
     .price
-      | #{item.getPrix() + '$ '}
-      a(href='#') Add to cart
+      | #{format.price(item.getPrix()) + '$ '}
+      a(href=url.action('cart/add') + '?id=' + item.getId()) Add to cart

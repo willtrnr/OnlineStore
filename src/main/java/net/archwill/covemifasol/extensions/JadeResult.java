@@ -25,6 +25,7 @@ public class JadeResult implements Result {
     defaults.put("title", "Covemifasol");
     defaults.put("pagetitle", "Covemifasol");
     defaults.put("url", new UrlHelper());
+    defaults.put("format", new FormatHelper());
     JADE.setSharedVariables(defaults);
     JADE.setCaching(false);
     DEFAULT_PARAM = "location";

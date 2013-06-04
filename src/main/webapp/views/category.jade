@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  nav.sidebar
+    ul
+      each genre in genres
+        li
+          a(href=url.action('store/genre') + '?id=' + genre.getId())= genre.getNom()
+  section.section
+    .section-header
+      h2= sectiontitle
+    .tiled
+      each item in items
+        include partials/itemtile

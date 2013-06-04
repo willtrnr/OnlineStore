@@ -1,17 +1,30 @@
 package net.archwill.covemifasol.actions;
 
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.interceptor.ParameterNameAware;
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.struts2.interceptor.ParameterAware;
 import org.apache.struts2.interceptor.SessionAware;
+import net.archwill.covemifasol.entities.Client;
+import net.archwill.covemifasol.DbManager;
 
-public class Action extends ActionSupport implements SessionAware, ParameterNameAware {
+public class Action implements com.opensymphony.xwork2.Action, SessionAware, ParameterNameAware {
   protected Map<String, Object> locals;
   protected Map<String, Object> session;
+  protected Client user;
 
   public Action() {
     locals = new HashMap<String, Object>();
+    session = new HashMap<String, Object>();
+  }
+
+  @Override
+  public String execute() throws Exception {
+    if (session != null && session.containsKey("userid")) {
+      //user = DbManager.Instance().findClientById(session.get("userid"));
+      locals.put("user", user);
+    }
+    return NONE;
   }
 
   public Map<String, Object> getLocals() {

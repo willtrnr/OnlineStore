@@ -1,8 +1,17 @@
 package net.archwill.covemifasol.entities;
 
+import java.sql.ResultSet;
+
 public class Genre extends Entity {
   public Genre() {
     super();
+  }
+
+  public Genre(ResultSet rs) throws Exception {
+    super();
+    setId(rs.getInt(1));
+    setItemType(rs.getInt(2));
+    setNom(rs.getString(3));
   }
 
   // id INTEGER NOT NULL,

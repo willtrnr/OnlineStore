@@ -28,7 +28,7 @@ body
               | #{' ' + user.name}
         else
           li.right
-            a(href='#')
+            a(href=url.action('login'))
               span.icon-signin
               |  Log In
           li.right
@@ -42,22 +42,22 @@ body
           a(href=url.action('index'))
             img(src=url.resource('img/logo.png'), alt=title)
       .search
-        form(action='#', method='get')
-          input(type='text', name='q', placeholder='Search')
+        form(action=url.action('store/search'), method='get')
+          input(type='text', name='q', placeholder='Search', value=query)
           button(type='submit')
             span.icon-search
     nav.menu
       ul
         li
-          a(href=url.action('store/books'))
+          a(href=url.action('store/category') + '?cat=1')
             span.icon-book
             |  Books
         li
-          a(href='#')
+          a(href=url.action('store/category') + '?cat=2')
             span.icon-film
             |  Movies
         li
-          a(href='#')
+          a(href=url.action('store/category') + '?cat=3')
             span.icon-headphones
             |  Music
         li.right

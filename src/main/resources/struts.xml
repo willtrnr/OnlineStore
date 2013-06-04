@@ -3,7 +3,7 @@
 <struts>
   <constant name="struts.devMode" value="true" />
 
-  <package name="default">
+  <package name="default" extends="struts-default">
     <result-types>
       <result-type name="jade" class="net.archwill.covemifasol.extensions.JadeResult" />
     </result-types>
@@ -11,15 +11,37 @@
     <action name="index" class="net.archwill.covemifasol.actions.IndexAction">
       <result type="jade">index</result>
     </action>
+    <action name="login" class="net.archwill.covemifasol.actions.LoginAction">
+      <result type="jade">login</result>
+    </action>
+
   </package>
 
-  <package name="store" namespace="/store">
+  <package name="store" namespace="/store" extends="struts-default">
     <result-types>
       <result-type name="jade" class="net.archwill.covemifasol.extensions.JadeResult" />
     </result-types>
 
-    <action name="books" class="net.archwill.covemifasol.actions.IndexAction">
-      <result type="jade">books</result>
+    <action name="category" class="net.archwill.covemifasol.actions.CategoryAction">
+      <result name="success" type="jade">category</result>
+      <result name="error" type="redirectAction">
+        <param name="namespace">/</param>
+        <param name="actionName">index</param>
+      </result>
+    </action>
+    <action name="genre" class="net.archwill.covemifasol.actions.GenreAction">
+      <result name="success" type="jade">category</result>
+      <result name="error" type="redirectAction">
+        <param name="namespace">/</param>
+        <param name="actionName">index</param>
+      </result>
+    </action>
+    <action name="item" class="net.archwill.covemifasol.actions.ItemAction">
+      <result name="success" type="jade">item</result>
+      <result name="error" type="redirectAction">
+        <param name="namespace">/</param>
+        <param name="actionName">index</param>
+      </result>
     </action>
   </package>
 </struts>
