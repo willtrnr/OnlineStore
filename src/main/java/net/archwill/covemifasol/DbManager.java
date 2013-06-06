@@ -111,6 +111,34 @@ public class DbManager {
     return items;
   }
 
+  private PreparedStatement itemsBySearch = null;
+  public List<Item> findItemsBySearch(String query) throws Exception {
+    if (itemsBySearch == null) itemsBySearch = connection.prepareStatement(
+      "SELECT * FROM ITEMS I1 INNER JOIN ITEMLIVRES L ON L.ITEM = I1.ID WHERE LOWER(I1.TITRE) LIKE '%' || LOWER(?) || '%' UNION " +
+      "SELECT * FROM ITEMS I2 INNER JOIN ITEMDVDS M ON M.ITEM = I2.ID WHERE LOWER(I2.TITRE) LIKE '%' || LOWER(?) || '%' UNION " +
+      "SELECT * FROM ITEMS I3 INNER JOIN ITEMDISQUES A ON A.ITEM = I3.ID WHERE LOWER(I3.TITRE) LIKE '%' || LOWER(?) || '%'"
+    );
+    query = query.replaceAll("\\s+", "%");
+    itemsBySearch.setString(1, query);
+    itemsBySearch.setString(2, query);
+    itemsBySearch.setString(3, query);
+    ResultSet rs = itemsBySearch.executeQuery();
+    List<Item> items = new ArrayList<Item>();
+    while (rs.next()) {
+      int type = rs.getInt(2);
+      if (type == 1) {
+        items.add(new AlbumItem(rs));
+      } else if (type == 2) {
+        items.add(new MovieItem(rs));
+      } else if (type == 3) {
+        items.add(new BookItem(rs));
+      } else {
+        items.add(new Item(rs));
+      }
+    }
+    return items;
+  }
+
 
   private PreparedStatement allGenres = null;
   public List<Genre> findAllGenres() throws Exception {
@@ -279,6 +307,39 @@ public class DbManager {
     insertClient.setString(8, client.getCcType());
     insertClient.setString(9, client.getEmail());
     insertClient.setString(10, client.getPassword());
-    return (insertClient.executeUpdate() != 0);
+    return (insertClient.executeUpdate() > 0);
+  }
+
+
+  private PreparedStatement orderId = null;
+  public int nextOrderId() throws Exception {
+    if (orderId == null) orderId = connection.prepareStatement("SELECT SEQ_COMMANDES.NEXTVAL FROM DUAL");
+    ResultSet rs = orderId.executeQuery();
+    if (rs.next()) {
+      return rs.getInt(1);
+    } else {
+      return 0;
+    }
+  }
+
+  private PreparedStatement insertOrder = null;
+  public Boolean save(Commande commande) throws Exception {
+    if (insertOrder == null) insertOrder = connection.prepareStatement("INSERT INTO COMMANDES (id, client, tstamp, pst, gst, total) VALUES (?, ?, SYSDATE, ?, ?, ?)");
+    insertOrder.setInt(1, commande.getId());
+    insertOrder.setInt(2, commande.getClient());
+    insertOrder.setDouble(3, commande.getPst());
+    insertOrder.setDouble(4, commande.getGst());
+    insertOrder.setDouble(5, commande.getTotal());
+    return (insertOrder.executeUpdate() > 0);
+  }
+
+  private PreparedStatement insertOrderEntry = null;
+  public Boolean saveToOrder(Commande commande, CartEntry entry) throws Exception {
+    if (insertOrderEntry == null) insertOrderEntry = connection.prepareStatement("INSERT INTO ITEMSCOMMANDES (commande, item, prix, qte) VALUES (?, ?, ?, ?)");
+    insertOrderEntry.setInt(1, commande.getId());
+    insertOrderEntry.setInt(2, entry.getItem().getId());
+    insertOrderEntry.setDouble(3, entry.getItem().getPrix());
+    insertOrderEntry.setInt(4, entry.getQte());
+    return (insertOrderEntry.executeUpdate() > 0);
   }
 }

@@ -12,7 +12,7 @@
       <result type="jade">index</result>
     </action>
     <action name="register" class="net.archwill.covemifasol.actions.RegisterAction">
-      <result name="success" type="redirectAction">index</result>
+      <result name="success" type="redirectAction">login</result>
       <result name="input" type="jade">register</result>
     </action>
     <action name="login" class="net.archwill.covemifasol.actions.LoginAction">
@@ -43,12 +43,11 @@
         <param name="actionName">index</param>
       </result>
     </action>
+    <action name="search" class="net.archwill.covemifasol.actions.SearchAction">
+      <result type="jade">search</result>
+    </action>
     <action name="item" class="net.archwill.covemifasol.actions.ItemAction">
       <result name="success" type="jade">item</result>
-      <result name="error" type="redirectAction">
-        <param name="namespace">/</param>
-        <param name="actionName">index</param>
-      </result>
     </action>
   </package>
 
@@ -65,6 +64,14 @@
     </action>
     <action name="remove" class="net.archwill.covemifasol.actions.CartRemoveAction">
       <result name="success" type="redirectAction">index</result>
+    </action>
+    <action name="checkout" class="net.archwill.covemifasol.actions.CheckoutAction">
+      <result name="success" type="jade">thankyou</result>
+      <result name="input" type="jade">checkout</result>
+      <result name="login" type="redirectAction">
+        <param name="namespace">/</param>
+        <param name="actionName">login</param>
+      </result>
     </action>
   </package>
 </struts>

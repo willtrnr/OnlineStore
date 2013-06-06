@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  section.section
+    .section-header
+      h2= query
+    .tiled
+      each item in items
+        include partials/itemtile

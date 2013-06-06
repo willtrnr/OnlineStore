@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  section.section
+    .page-header
+      h2 Checkout
+    if session && session.cart
+      table
+        thead
+          tr
+            th Name
+            th Price
+            th Qte
+            th Total
+        each entry in session.cart.values()
+          if entry.getItem()
+            tr
+              td
+                a(href=url.action('store/item') + '?id=' + entry.getItem().getId())= entry.getItem().getTitre()
+              td= format.price(entry.getItem().getPrix()) + '$'
+              td= entry.getQte()
+              td= format.price(entry.getQte() * entry.getItem().getPrix()) + '$'
+        tr(style='border-bottom: none')
+          td.text-right(colspan=3) PST
+          td= format.price(pst) + '$'
+        tr(style='border-bottom: none')
+          td.text-right(colspan=3) GST
+          td= format.price(gst) + '$'
+        tr(style='border-bottom: none')
+          td.text-right(colspan=3)
+            strong Total
+          td= format.price(total) + '$'
+
+      form(action=url.action('cart/checkout'), method='get')
+        button(type='submit', name='confirm', value='yes')
+          span.icon-ok
+          |  Confirm checkout
+

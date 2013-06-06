@@ -4,20 +4,43 @@ block content
   section.section
     .page-header
       h2 Cart
-    table
-      thead
-        tr
-          th
-          th Name
-          th Price
-          th Qte
-          th Total
-      if session && session.cart
-        each entry in session.cart.values()
-          if entry.getItem()
+    if session && session.cart && session.cart.size() > 0
+      form(action=url.action('cart/remove'), method='get')
+        table
+          thead
             tr
+              th Name
+              th Price
+              th Qte
+              th Total
               td
-              td= entry.getItem().getTitre()
-              td= format.price(entry.getItem().getPrix()) + '$'
-              td= entry.getQte()
-              td= format.price(entry.getQte() * entry.getItem().getPrix()) + '$'
+          each entry in session.cart.values()
+            if entry.getItem()
+              tr
+                td
+                  a(href=url.action('store/item') + '?id=' + entry.getItem().getId())= entry.getItem().getTitre()
+                td= format.price(entry.getItem().getPrix()) + '$'
+                td= entry.getQte()
+                td= format.price(entry.getQte() * entry.getItem().getPrix()) + '$'
+                td
+                  button(type='submit', name='id', value=entry.getItem().getId())
+                    span.icon-remove
+          tr(style='border-bottom: none')
+            td.text-right(colspan=3) PST
+            td= format.price(pst) + '$'
+          tr(style='border-bottom: none')
+            td.text-right(colspan=3) GST
+            td= format.price(gst) + '$'
+          tr(style='border-bottom: none')
+            td.text-right(colspan=3)
+              strong Total
+            td= format.price(total) + '$'
+
+
+      form(action=url.action('cart/checkout'), method='get')
+        button(type='submit', name='confirm', value='no')
+          span.icon-shopping-cart
+          |  Checkout
+    else
+      p.text-center Your cart is empty!
+

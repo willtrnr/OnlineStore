@@ -22,7 +22,6 @@ public class JadeResult implements Result {
     JADE = new JadeConfiguration();
     Map<String, Object> defaults = new HashMap<String, Object>();
     defaults.put("title", "Covemifasol");
-    defaults.put("url", new UrlHelper());
     defaults.put("format", new FormatHelper());
     JADE.setSharedVariables(defaults);
     JADE.setCaching(false);
@@ -34,7 +33,14 @@ public class JadeResult implements Result {
     File file = new File(ServletActionContext.getServletContext().getRealPath("/views/"), location);
     LOGGER.debug("Jade rendering '#0'", file.toString());
     JadeTemplate template = JADE.getTemplate(file.getAbsolutePath());
-    JADE.renderTemplate(template, ((Action)ai.getAction()).getLocals(), ServletActionContext.getResponse().getWriter());
+    Map<String, Object> locals = null;
+    try {
+      locals = ((Action)ai.getAction()).getLocals();
+    } catch (Exception ex) {
+      locals = new HashMap<String, Object>();
+    }
+    locals.put("url", new UrlHelper(ServletActionContext.getServletContext().getRealPath("/")));
+    JADE.renderTemplate(template, locals, ServletActionContext.getResponse().getWriter());
   }
 
   private String location;

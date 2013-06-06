@@ -85,6 +85,13 @@ public class Client extends Entity {
   }
   public void setCcNumber(String ccNumber) {
     this.ccNumber = ccNumber;
+    if (ccNumber.charAt(0) == '3') {
+      setCcType("Amex");
+    } else if (ccNumber.charAt(0) == '4') {
+      setCcType("Visa");
+    } else if (ccNumber.charAt(0) == '5') {
+      setCcType("MasterCard");
+    }
   }
 
   // ccmonth SMALLINT,
@@ -102,7 +109,11 @@ public class Client extends Entity {
     return ccYear;
   }
   public void setCcYear(int ccYear) {
-    this.ccYear = ccYear;
+    if (ccYear < 1000) {
+      this.ccYear = ccYear + 2000;
+    } else {
+      this.ccYear = ccYear;
+    }
   }
 
   // cctype VARCHAR2(10),

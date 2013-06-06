@@ -4,28 +4,40 @@ block content
   section.section
     .section-header
       h2 Register
-    form(action=url.action('register'), method='post')
-      fieldset
-        div
+    form.form-horizontal(action=url.action('register'), method='post')
+      .field-group
+        .field
+          label(for='client.nom') Nom
           input(id='client.nom', type='text', name='client.nom', placeholder='Last name', required)
-        div
+        .field
+          label(for='client.prenom') Prenom
           input(id='client.prenom', type='text', name='client.prenom', placeholder='First name', required)
-        div
+      .field-group
+        .field
+          label(for='client.addresse') Adresse
           input(id='client.addresse', type='text', name='client.addresse', placeholder='Address')
-        div
+        .field
+          label(for='client.ville') Ville
           input(id='client.ville', type='text', name='client.ville', placeholder='City')
-        div
+      .field-group
+        .field
+          label(for='client.email') E-mail
           input(id='client.email', type='email', name='client.email', placeholder='E-mail', required)
-        div
+        .field
+          label(for='client.password') Password
           input(id='client.password', type='password', name='client.password', placeholder='Password', required)
-        div
+        .field
+          label(for='confirm') Confirm
           input(id='confirm', type='password', name='confirm', placeholder='Confirm', required)
-        div
+      .field-group
+        .field
+          label(for='client.ccNumber') CC Number
           input(id='client.ccNumber', type='text', name='client.ccNumber', placeholder='CC Number')
-        div
-          input(id='client.ccMonth', type='number', name='client.ccMonth', min='1', max='12', placeholder='CC Month')
-          input(id='client.ccYear', type='number', name='client.ccYear', min='13', max='99', placeholder='CC Year')
-      div
+        .field
+          label(for='client.ccMonth') Expiration
+          input(id='client.ccMonth', type='number', name='client.ccMonth', min='1', max='12', placeholder='Month')
+          input(id='client.ccYear', type='number', name='client.ccYear', min='13', max='99', placeholder='Year')
+      .actions
         button(type='submit')
           span.icon-ok
           |  Register

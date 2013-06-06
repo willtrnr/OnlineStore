@@ -2,14 +2,17 @@
    HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
    ========================================================================== */
 
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+
 html, button, input, select, textarea {
   color: #222;
 }
 
 body {
+  background: #EEE url('../img/squairy_light.png') repeat fixed 0 0;
+  font-family: "Droid Sans", sans-serif;
   font-size: 1em;
   line-height: 1.4;
-  background: #EEE url('../img/squairy_light.png') repeat fixed 0 0;
 }
 
 ::-moz-selection {
@@ -23,10 +26,10 @@ body {
 }
 
 hr {
+  border-top: 1px solid #ccc;
+  border: 0;
   display: block;
   height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
   margin: 1em 0;
   padding: 0;
 }
@@ -46,9 +49,9 @@ textarea {
 }
 
 .chromeframe {
-  margin: 0.2em 0;
   background: #ccc;
   color: #000;
+  margin: 0.2em 0;
   padding: 0.2em 0;
 }
 
@@ -57,9 +60,27 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+/* Utilities */
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
 /* Generic menu */
 .menu {
-  background: #AAA;
+  background: #AAAAAA;
   height: 30px;
   padding: 0 15px;
 }
@@ -73,7 +94,7 @@ textarea {
   float: left;
 }
 .menu a {
-  color: #FFF;
+  color: #FFFFFF;
   display: block;
   padding: 4px 10px;
   text-decoration: none;
@@ -87,14 +108,14 @@ textarea {
 
 /* Main section */
 .main {
-  background: #FFF;
+  background: #FFFFFF;
   margin: 25px auto;
   width: 960px;
 }
 
 /* Main header */
 .header {
-  background: #DDD;
+  background: #DDDDDD;
   padding: 0 25px;
 }
 .header .logo, .header .search {
@@ -105,14 +126,14 @@ textarea {
   width: 385px;
 }
 .header .search input {
-  border: 1px solid #CCC;
+  border: 1px solid #CCCCCC;
   padding: 3px 10px;
   width: 445px;
 }
 .header .search button {
   background: #1F1F1F;
   border: none;
-  color: #FFF;
+  color: #FFFFFF;
   padding: 3px 20px;
 }
 .header .search button:hover {
@@ -135,30 +156,80 @@ textarea {
 .slider .dots {
   bottom: 10px;
   position: absolute;
-  right: 10px;
+  right: 15px;
 }
 .slider .dots .dot {
-  background: #CCC;
-  border: 2px solid #CCC;
+  background: #CCCCCC;
+  color: #CCCCCC;
   content: '';
   cursor: pointer;
   display: inline-block;
-  height: 5px;
+  height: 10px;
   margin: 0 3px;
   overflow: hidden;
-  width: 5px;
+  width: 10px;
 }
 .slider .dots .active {
-  border: 2px solid #000;
+  background: #696969;
+  color: #696969;
 }
 
 /* Content */
 .content {
+  min-height: 200px;
   padding: 0 25px;
   position: relative;
 }
 .content h2 {
   margin: 0;
+}
+.content input {
+  border: 1px solid #AAAAAA;
+  margin: 2px 3px;
+  padding: 3px 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.content table th {
+  min-width: 65px;
+  text-align: left;
+  padding: 0 5px;
+}
+.content table td {
+  padding: 0 5px;
+}
+.content table tr {
+  border-bottom: 1px solid #AAAAAA;
+}
+.content .sidebar {
+  border-left: 2px solid #AAAAAA;
+  border-right: 2px solid #AAAAAA;
+  bottom: -15px;
+  left: 0;
+  position: absolute;
+  top: -15px;
+  width: 190px;
+}
+.content .sidebar ul {
+  margin: 0;
+  padding: 0;
+}
+.content .sidebar ul li {
+  border-bottom: 2px solid #AAAAAA;
+  display: block;
+}
+.content .sidebar a {
+  background: #FFF;
+  color: #1F1F1F;
+  display: block;
+  padding: 3px 10px;
+  text-decoration: none;
+}
+.content .sidebar a:hover {
+  background: #DDDDDD;
+}
+.content .sidebar ~ .section {
+  margin-left: 195px;
 }
 .content .section {
   margin: 15px 0;
@@ -169,7 +240,7 @@ textarea {
   padding: 15px;
 }
 .content .tile:hover {
-  background: #AAA;
+  background: #AAAAAA;
 }
 .content .horizontal {
   position: relative;
@@ -200,41 +271,23 @@ textarea {
 .content .horizontal .tile:last-child {
   margin-right: 125px;
 }
-.content .sidebar {
-  border-left: 2px solid #AAA;
-  border-right: 2px solid #AAA;
-  bottom: -15px;
-  left: 0;
-  position: absolute;
-  top: -15px;
-  width: 190px;
-}
-.content .sidebar ul {
-  margin: 0;
-  padding: 0;
-}
-.content .sidebar ul li {
-  border-bottom: 2px solid #AAA;
+.content .form-horizontal {
   display: block;
+  margin: 0 auto;
+  width: 350px;
 }
-.content .sidebar a {
-  background: #FFF;
-  color: #1F1F1F;
-  display: block;
-  padding: 3px 10px;
-  text-decoration: none;
+.content .form-horizontal label {
+  display: inline-block;
+  width: 145px;
 }
-.content .sidebar a:hover {
-  background: #DDD;
-}
-.content .sidebar ~ .section {
-  margin-left: 195px;
+.content .form-horizontal .field-group {
+  margin-bottom: 15px;
 }
 
 /* Footer */
 .footer {
-  background: #AAA;
-  color: #FFF;
+  background: #AAAAAA;
+  color: #FFFFFF;
   padding: 10px 0;
   text-align: center;
 }

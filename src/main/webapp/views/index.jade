@@ -4,11 +4,12 @@ block precontent
   .slider
     ul
       li
-        img(src='holder.js/960x225', width='960', height='225')
+        img(src=url.resource('img/like-us-facebook.png'), width='960', height='225')
       li
-        img(src='holder.js/960x225', width='960', height='225')
+        img(src=url.resource('img/follow-us-twitter.jpg'), width='960', height='225')
       li
-        img(src='holder.js/960x225', width='960', height='225')
+        a(href=url.action('store/item') + '?id=10087')
+          img(src=url.resource('img/tiesto.jpg'), width='960', height='225')
 
 block content
   section.section

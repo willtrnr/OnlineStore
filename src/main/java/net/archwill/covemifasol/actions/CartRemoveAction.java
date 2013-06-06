@@ -9,7 +9,9 @@ public class CartRemoveAction extends Action {
     super.execute();
     if (id != 0 && session != null) {
       Map<Integer, CartEntry> cart = (Map<Integer, CartEntry>)session.get("cart");
-      cart.remove(id);
+      if (cart.containsKey(id)) {
+        cart.remove(id);
+      }
     }
     return SUCCESS;
   }

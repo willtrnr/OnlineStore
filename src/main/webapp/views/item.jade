@@ -5,10 +5,13 @@ block content
     .page-header
       h2= item.getTitre()
     if item.getItemType() == 1
-      img(src='holder.js/270x270', width='270', height='270')
+      img(src=url.item(item.getId(), 270, 270), width='270', height='270')
     else
-      img(src='holder.js/270x400', width='270', height='400')
+      img(src=url.item(item.getId(), 270, 400), width='270', height='400')
     .details
       .price
         | #{format.price(item.getPrix()) + '$ '}
-        a(href=url.action('cart/add') + '?id=' + item.getId()) Add to cart
+        if item.getStock() > item.getStockLimit()
+          a(href=url.action('cart/add') + '?id=' + item.getId()) Add to cart
+        else
+          | Out of stock

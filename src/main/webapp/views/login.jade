@@ -4,13 +4,15 @@ block content
   section.section
     .section-header
       h2 Log In
-    form(action=url.action('login'), method='post')
-      fieldset
-        div
+    form.form-horizontal(action=url.action('login'), method='post')
+      .field-group
+        .field
+          label(for='email') E-mail
           input(id='email', type='email', name='email', placeholder='E-mail', required)
-        div
+        .field
+          label(for='password') Password
           input(id='password', type='password', name='password', placeholder='Password', required)
-      div
+      .actions
         button(type='submit')
           span.icon-signin
           |  Log In
