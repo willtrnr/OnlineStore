@@ -40,7 +40,7 @@ public class CheckoutAction extends Action {
             }
           }
           cart.clear();
-          locals.put("id", cmd.getId());
+          locals.put("order", cmd);
           return SUCCESS;
         }
       }
