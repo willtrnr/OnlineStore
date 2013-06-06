@@ -11,13 +11,16 @@
     <action name="index" class="net.archwill.covemifasol.actions.IndexAction">
       <result type="jade">index</result>
     </action>
+    <action name="register" class="net.archwill.covemifasol.actions.RegisterAction">
+      <result name="success" type="redirectAction">index</result>
+      <result name="input" type="jade">register</result>
+    </action>
     <action name="login" class="net.archwill.covemifasol.actions.LoginAction">
       <result name="success" type="redirectAction">index</result>
       <result name="input" type="jade">login</result>
     </action>
-    <action name="register" class="net.archwill.covemifasol.actions.RegisterAction">
-      <result name="success" type="redirectAction">index</result>
-      <result name="input" type="jade">register</result>
+    <action name="logout" class="net.archwill.covemifasol.actions.LogoutAction">
+      <result type="redirectAction">index</result>
     </action>
   </package>
 
@@ -58,6 +61,9 @@
       <result name="success" type="jade">cart</result>
     </action>
     <action name="add" class="net.archwill.covemifasol.actions.CartAddAction">
+      <result name="success" type="redirectAction">index</result>
+    </action>
+    <action name="remove" class="net.archwill.covemifasol.actions.CartRemoveAction">
       <result name="success" type="redirectAction">index</result>
     </action>
   </package>

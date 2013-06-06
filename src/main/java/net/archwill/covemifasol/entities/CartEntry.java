@@ -1,5 +1,7 @@
 package net.archwill.covemifasol.entities;
 
+import net.archwill.covemifasol.DbManager;
+
 public class CartEntry extends Entity {
   public CartEntry() {
     super();
@@ -25,12 +27,15 @@ public class CartEntry extends Entity {
   }
 
   // item INTEGER NOT NULL,
-  private int item;
-  public int getItem() {
+  private Item item;
+  public Item getItem() {
     return item;
   }
-  public void setItem(int item) {
+  public void setItem(Item item) {
     this.item = item;
+  }
+  public void setItem(int item) throws Exception {
+    this.item = DbManager.Instance().findItemById(item);
   }
 
   // qte INTEGER NOT NULL,

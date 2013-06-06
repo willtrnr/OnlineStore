@@ -4,5 +4,20 @@ block content
   section.section
     .page-header
       h2 Cart
-    each entry in session.cart.values()
-      div= entry.getItem() + ' x' + entry.getQte();
+    table
+      thead
+        tr
+          th
+          th Name
+          th Price
+          th Qte
+          th Total
+      if session && session.cart
+        each entry in session.cart.values()
+          if entry.getItem()
+            tr
+              td
+              td= entry.getItem().getTitre()
+              td= format.price(entry.getItem().getPrix()) + '$'
+              td= entry.getQte()
+              td= format.price(entry.getQte() * entry.getItem().getPrix()) + '$'
